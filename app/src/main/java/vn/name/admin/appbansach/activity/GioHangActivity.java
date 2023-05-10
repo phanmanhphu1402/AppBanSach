@@ -38,7 +38,7 @@ public class GioHangActivity extends AppCompatActivity {
         initView();
         initControl();
 
-        //reset tiền về 0 video 57
+        //reset tiền về 0 (video 57)
         if (Utils.manggiohang != null){
             Utils.manggiohang.clear();
         }
@@ -57,12 +57,7 @@ public class GioHangActivity extends AppCompatActivity {
     private void initControl() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        toolbar.setNavigationOnClickListener(view -> finish());
 
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);

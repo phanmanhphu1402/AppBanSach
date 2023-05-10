@@ -31,7 +31,6 @@
             android:layout_width="30dp"
             android:layout_height="30dp">
         </ImageView>
-
     </androidx.appcompat.widget.Toolbar>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_ql"

@@ -1,8 +1,10 @@
 package vn.name.admin.appbansach.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,6 +30,7 @@ public class SachCuMainActivity extends AppCompatActivity {
     Toolbar toolbar;
     RecyclerView recyclerView;
     ApiBanSach apiBanSach;
+    ImageView img_search;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     int page = 1;
     int loai;
@@ -137,12 +140,17 @@ public class SachCuMainActivity extends AppCompatActivity {
     }
 
     private void AnhXa() {
+        img_search = findViewById(R.id.img_search);
         toolbar = findViewById(R.id.toobar);
         recyclerView = findViewById(R.id.recycleview_sc);
         linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
         sanPhamMoiList = new ArrayList<>();
+        img_search.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override

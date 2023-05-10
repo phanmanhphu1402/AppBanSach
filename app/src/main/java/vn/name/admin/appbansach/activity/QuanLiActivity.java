@@ -1,6 +1,7 @@
 package vn.name.admin.appbansach.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -8,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -29,6 +31,7 @@ import vn.name.admin.appbansach.retrofit.RetrofitClient;
 import vn.name.admin.appbansach.utils.Utils;
 
 public class QuanLiActivity extends AppCompatActivity {
+    Toolbar toolbar;
     ImageView img_them, img_search;
     RecyclerView recyclerView;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
@@ -46,7 +49,10 @@ public class QuanLiActivity extends AppCompatActivity {
         initView();
         initControl();
         getSpMoi();
+        ActionToolBar();
+
     }
+
 
     private void initControl() {
         img_them.setOnClickListener(v -> {
@@ -78,6 +84,7 @@ public class QuanLiActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        toolbar = findViewById(R.id.toolbarquanli);
         img_search = findViewById(R.id.img_search);
         img_them = findViewById(R.id.img_them);
         recyclerView = findViewById(R.id.recycler_ql);
@@ -120,6 +127,16 @@ public class QuanLiActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void ActionToolBar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
     @Override
     protected void onDestroy() {
         compositeDisposable.clear();
