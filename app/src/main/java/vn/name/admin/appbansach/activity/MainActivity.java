@@ -29,6 +29,7 @@ import com.nex3z.notificationbadge.NotificationBadge;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.paperdb.Paper;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
@@ -37,6 +38,7 @@ import vn.name.admin.appbansach.adapter.LoaiSpAdapter;
 import vn.name.admin.appbansach.adapter.SanPhamMoiAdapter;
 import vn.name.admin.appbansach.model.LoaiSp;
 import vn.name.admin.appbansach.model.SanPhamMoi;
+import vn.name.admin.appbansach.model.User;
 import vn.name.admin.appbansach.retrofit.ApiBanSach;
 import vn.name.admin.appbansach.retrofit.RetrofitClient;
 import vn.name.admin.appbansach.utils.Utils;
@@ -64,12 +66,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         apiBanSach = RetrofitClient.getInstance(Utils.BASE_URL).create(ApiBanSach.class);
-
+        Paper.init(this);
+        if (Paper.book().read("user") != null){
+            User user = Paper.book().read("user");
+            Utils.user_current = user;
+        }
         Anhxa();
         ActionBar();
 
         if (isConnected(this)){
-
             ActionViewFlipper();
             getLoaiSanPham();
             getSpMoi();
@@ -93,15 +98,25 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case 2:
                     Intent sachmoi = new Intent(getApplicationContext(),SachMoiMainActivity.class);
+                    sachmoi.putExtra("loai",2);
                     startActivity(sachmoi);
                     break;
                 case 5:
-                    Intent QuanLi = new Intent(getApplicationContext(), QuanLiActivity.class);
-                    startActivity(QuanLi);
+                    Intent quanli = new Intent(getApplicationContext(),QuanLiActivity.class);
+                    startActivity(quanli);
+                    break;
+                case 6:
+                    Intent donhang = new Intent(getApplicationContext(),XemDonActivity.class);
+                    startActivity(donhang);
                     break;
                 case 7:
-                    //xoa key user
+                    // xoa key user
+                    Paper.book().delete("user");
+                    Intent dangnhap = new Intent(getApplicationContext(), DangNhapActivity.class);
+                    startActivity(dangnhap);
+                    finish();
                     break;
+
             }
         });
     }

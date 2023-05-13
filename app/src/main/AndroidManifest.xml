@@ -17,21 +17,35 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activity.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".activity.SearchActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.ThemSpActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+            android:name=".activity.XemDonActivity"
+            android:exported="false" />
         <activity
-            android:name=".activity.QuanLiActivity"
+            android:name=".activity.ThanhToanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ResetPassActivity"
             android:exported="false" />
         <activity
             android:name=".activity.DangNhapActivity"
-            android:exported="true"></activity>
+            android:exported="true"/>
+        <activity
+            android:name=".activity.ThemSpActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".activity.QuanLiActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.DangKiActivity"
             android:exported="false" />
@@ -49,13 +63,7 @@
             android:exported="false" />
         <activity
             android:name=".activity.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>

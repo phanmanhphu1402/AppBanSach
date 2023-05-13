@@ -9,6 +9,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import vn.name.admin.appbansach.model.DonHangModel;
 import vn.name.admin.appbansach.model.LoaiSpModel;
 import vn.name.admin.appbansach.model.MessageModel;
 import vn.name.admin.appbansach.model.SanPhamMoiModel;
@@ -37,6 +38,18 @@ public interface ApiBanSach {
             @Field("mobile") String mobile
     );
 
+    @POST("dangnhap.php")
+    @FormUrlEncoded
+    Observable<UserModel> dangNhap(
+            @Field("email") String email,
+            @Field("pass") String pass
+    );
+
+    @POST("reset.php")
+    @FormUrlEncoded
+    Observable<UserModel> dangNhap(
+            @Field("email") String email
+    );
     @POST("insertsp.php")
     @FormUrlEncoded
     Observable<MessageModel> insertSp(
@@ -56,6 +69,24 @@ public interface ApiBanSach {
             @Field("mota") String mota,
             @Field("loai") int idloai,
             @Field("id") int id
+    );
+
+    @POST("donhang.php")
+    @FormUrlEncoded
+    Observable<UserModel> createOrder(
+            @Field("email") String email,
+            @Field("sdt") String sdt,
+            @Field("tongtien") String tongtien,
+            @Field("iduser") int id,
+            @Field("diachi") String diachi,
+            @Field("soluong") int soluong,
+            @Field("chitiet") String chitiet
+    );
+
+    @POST("xemdonhang.php")
+    @FormUrlEncoded
+    Observable<DonHangModel> xemDonHang(
+            @Field("iduser") int id
     );
 
     @Multipart

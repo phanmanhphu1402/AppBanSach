@@ -25,6 +25,7 @@
         android:layout_height="wrap_content">
         <com.google.android.material.textfield.TextInputEditText
             android:hint="Email"
+            android:id="@+id/email"
             android:inputType="textEmailAddress"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -44,6 +45,7 @@
         android:layout_height="wrap_content">
         <com.google.android.material.textfield.TextInputEditText
             android:hint="Pass"
+            android:id="@+id/pass"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:inputType="textPassword"
@@ -53,7 +55,7 @@
             android:layout_height="wrap_content"/>
 
     </com.google.android.material.textfield.TextInputLayout>
-    
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btndangnhap"
         app:layout_constraintTop_toBottomOf="@id/line2"
@@ -66,6 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <LinearLayout
+        android:id="@+id/line6"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -87,7 +90,16 @@
             android:textColor="@android:color/holo_red_light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-
     </LinearLayout>
+    <TextView
+        app:layout_constraintTop_toBottomOf="@id/line6"
+        android:layout_marginTop="15dp"
+        android:text="Quên mật khẩu"
+        android:textColor="@color/colortext"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:id="@+id/txtresetpass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
