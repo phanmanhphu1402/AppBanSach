@@ -59,6 +59,7 @@ public class ThemSpActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         initView();
         initData();
+        ActionToolBar();
         Intent intent = getIntent();
         sanPhamSua = (SanPhamMoi) intent.getSerializableExtra("sua");
         if (sanPhamSua == null){
@@ -75,6 +76,12 @@ public class ThemSpActivity extends AppCompatActivity {
             binding.hinhanh.setText(sanPhamSua.getHinhanh());
             binding.spinnerLoai.setSelection(sanPhamSua.getLoai());
         }
+    }
+
+    private void ActionToolBar() {
+        setSupportActionBar(binding.toolbarthemsp);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        binding.toolbarthemsp.setNavigationOnClickListener(view -> finish());
     }
 
     private void initData() {

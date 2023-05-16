@@ -13,6 +13,7 @@ import vn.name.admin.appbansach.model.DonHangModel;
 import vn.name.admin.appbansach.model.LoaiSpModel;
 import vn.name.admin.appbansach.model.MessageModel;
 import vn.name.admin.appbansach.model.SanPhamMoiModel;
+import vn.name.admin.appbansach.model.ThongKeModel;
 import vn.name.admin.appbansach.model.UserModel;
 
 public interface ApiBanSach {
@@ -21,6 +22,11 @@ public interface ApiBanSach {
 
     @GET("getspmoi.php")
     Observable<SanPhamMoiModel> getSpMoi();
+
+    @GET("thongke.php")
+    Observable<ThongKeModel> getthongKe();
+    @GET("getusermoi.php")
+    Observable<UserModel> getUserMoi();
 
     @POST("chitiet.php")
     @FormUrlEncoded
@@ -35,7 +41,26 @@ public interface ApiBanSach {
             @Field("email") String email,
             @Field("pass") String pass,
             @Field("username") String username,
+            @Field("mobile") String mobile,
+            @Field("uid") String uid
+    );
+
+    @POST("themuser.php")
+    @FormUrlEncoded
+    Observable<UserModel> themUser(
+            @Field("email") String email,
+            @Field("pass") String pass,
+            @Field("username") String username,
             @Field("mobile") String mobile
+    );
+    @POST("updateuser.php")
+    @FormUrlEncoded
+    Observable<UserModel> suaUser(
+            @Field("email") String email,
+            @Field("pass") String pass,
+            @Field("username") String username,
+            @Field("mobile") String mobile,
+            @Field("id") int id
     );
 
     @POST("dangnhap.php")
@@ -60,6 +85,19 @@ public interface ApiBanSach {
             @Field("loai") int id
     );
 
+    @POST("updatetoken.php")
+    @FormUrlEncoded
+    Observable<MessageModel> updateToken(
+            @Field("id") int id,
+            @Field("token") String token
+    );
+
+    @POST("updateorder.php")
+    @FormUrlEncoded
+    Observable<MessageModel> updateOrder(
+            @Field("id") int id,
+            @Field("trangthai") int trangthai
+    );
     @POST("updatesp.php")
     @FormUrlEncoded
     Observable<MessageModel> updateSp(
@@ -98,9 +136,25 @@ public interface ApiBanSach {
     Observable<MessageModel> xoaSanPham(
             @Field("id") int id
     );
+    @POST("xoaUser.php")
+    @FormUrlEncoded
+    Observable<MessageModel> xoaUser(
+            @Field("id") int id
+    );
     @POST("timkiem.php")
     @FormUrlEncoded
     Observable<SanPhamMoiModel> search(
             @Field("search") String search
+    );
+    @POST("searchUser.php")
+    @FormUrlEncoded
+    Observable<UserModel> searchuser(
+            @Field("search") String search
+    );
+    @POST("gettoken.php")
+    @FormUrlEncoded
+    Observable<UserModel> gettoken(
+            @Field("status") int status,
+            @Field("iduser") int iduser
     );
 }

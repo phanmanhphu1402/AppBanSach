@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -16,6 +17,33 @@
         android:theme="@style/Theme.AppBanSach"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".activity.ThongKeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.QLChatActivity"
+            android:exported="false" />
+
+        <service
+            android:name=".Sevice.FirebaseMessagerReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".activity.SearchUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ThemUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.QuanLiUserActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.SplashActivity"
             android:exported="true">
@@ -39,10 +67,10 @@
             android:exported="false" />
         <activity
             android:name=".activity.DangNhapActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".activity.ThemSpActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".activity.QuanLiActivity"
             android:exported="false" />
@@ -64,6 +92,13 @@
         <activity
             android:name=".activity.MainActivity"
             android:exported="true" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/baseline_notifications_24" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/black" />
     </application>
 
 </manifest>

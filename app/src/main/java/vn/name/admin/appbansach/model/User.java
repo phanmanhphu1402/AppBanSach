@@ -1,11 +1,34 @@
 package vn.name.admin.appbansach.model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     int id;
     String email;
     String pass;
     String username;
     String mobile;
+    String uid;
+    String token;
+
+    public User() {
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 
     public int getId() {
         return id;

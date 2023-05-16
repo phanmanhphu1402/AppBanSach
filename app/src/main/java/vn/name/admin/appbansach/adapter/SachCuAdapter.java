@@ -58,8 +58,6 @@ public class SachCuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             myViewHolder.mota.setText(sanPham.getMota());
             myViewHolder.idsp.setText(sanPham.getId() + "");
 
-
-            //chỉnh thêm bên sách mới nữa để load hình sau khi thêm sp mới
             if (sanPham.getHinhanh().contains("http")){
                 Glide.with(context).load(sanPham.getHinhanh()).into(myViewHolder.hinhanh);
             }else{
@@ -68,16 +66,13 @@ public class SachCuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 Glide.with(context).load(hinh).into(myViewHolder.hinhanh);
             }
 
-            myViewHolder.setItemClickListener(new ItemClickListener() {
-                @Override
-                public void onClick(View view, int pos, boolean isLongClick) {
-                    if (!isLongClick){
-                        // click
-                        Intent intent = new Intent(context, ChiTietActivity.class);
-                        intent.putExtra("chitiet",sanPham);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        context.startActivity(intent);
-                    }
+            myViewHolder.setItemClickListener((view, pos, isLongClick) -> {
+                if (!isLongClick){
+                    // click
+                    Intent intent = new Intent(context, ChiTietActivity.class);
+                    intent.putExtra("chitiet",sanPham);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
                 }
             });
         }else {
